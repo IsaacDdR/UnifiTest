@@ -104,8 +104,14 @@ function dropIndex($index){
 <?php
 function dropKeys($keys){
   foreach($keys as $x => $y){
-    if($x == "id"){
-      print_r("Muestra ID" .$y);
+    if($x == "_id"){
+      print_r("Muestra ID: " .$y);
+      echo '<br>';
+    }elseif($x == "uptime"){
+      print_r ("Muestra Uptime: ". $y);
+      echo '<br>';
+    }elseif($x == "guest-num"){
+      print_r ("Muestra guests: ". $y);
     }
   }
 }
@@ -113,10 +119,10 @@ dropKeys($indexDevices)
 ?>
 
 <?php
-echo '<br>';
-echo '-------------Start values drop----------' . '<br>';
-echo '<br>';
 function dropValues($values){
+  echo '<br>';
+  echo '-------------Start values drop----------' . '<br>';
+  echo '<br>';
   foreach($values as $x => $y){
     echo $y .  '<br>';
   }
