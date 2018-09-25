@@ -39,6 +39,7 @@ $login  = $unifidata->login();
 */
 #------------List_Devices--------------------
 
+
 $unifiDevices = $unifidata->list_devices();
 
 $devicesJson = json_decode(json_encode($unifiDevices),true);
@@ -110,12 +111,11 @@ function dropKeys($keys){
     }elseif($x == "uptime"){
       print_r ("Muestra Uptime: ". $y);
       echo '<br>';
-    }elseif($x == "guest-num"){
-      print_r ("Muestra guests: ". $y);
     }
   }
 }
 dropKeys($indexDevices)
+
 ?>
 
 <?php
@@ -132,20 +132,3 @@ function dropValues($values){
 }
 #dropValues($indexDevices)
 ?>
-<?php
-/**
-*echo '<br>';
-
-*echo '<br>' .'--------------Array drop---------------'. '<br>';
-
-*echo '<br>';
-
-*print_r(array_keys($indexDevices));
-
-*echo '<br>';
-
-*echo '<br>';
-
-*#print_r(array_values($indexDevices));
-*?>
-*/
