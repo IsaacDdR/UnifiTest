@@ -44,9 +44,13 @@ $unifiDevices = $unifidata->list_devices();
 
 $devicesJson = json_decode(json_encode($unifiDevices),true);
 
-$indexDevices = $devicesJson[0];
+$indexDevices = $devicesJson;
+
+
+
 
 #echo $indexArray['ip'];
+
 
 
 #----------List_Users-------------------------
@@ -55,8 +59,22 @@ $indexDevices = $devicesJson[0];
 $unifiUsers = $unifidata->stat_allusers();
 
 $usersJson = json_decode(json_encode($unifiUsers), true);
+$indexUsers = $usersJson;
 
-$indexUsers = $usersJson[0];
+foreach(array_keys($indexUsers) as $key => $value){
+  $keys = (int)$key;
+
+}
+for($i = 0; $i <= $keys;$i ++ ){
+  $imprimeNombre = $indexUsers[$i];
+  foreach($imprimeNombre as $key => $value){
+    if($key == "hostname"){
+      print_r($value);
+      echo '<br>';
+    }
+  }
+
+}
 
 
 #-------------List_Clients---------------------
@@ -67,6 +85,7 @@ $unifiClients = $unifidata->list_clients();
 $clientsJson = json_decode(json_encode($unifiClients), true);
 
 $indexClients = $clientsJson;
+
 
 
 #------------List_Guests-------------------------
@@ -131,4 +150,11 @@ function dropValues($values){
   echo '<br>';
 }
 #dropValues($indexDevices)
+?>
+
+<?php
+
+for($i = 0; $i <=  $keys; $i ++){
+  echo $newTry[$i];
+}
 ?>
