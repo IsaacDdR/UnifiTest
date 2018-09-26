@@ -59,23 +59,23 @@ $indexDevices = $devicesJson;
 $unifiUsers = $unifidata->stat_allusers();
 
 $usersJson = json_decode(json_encode($unifiUsers), true);
+
 $indexUsers = $usersJson;
 
-foreach(array_keys($indexUsers) as $key => $value){
-  $keys = (int)$key;
+$hostname = "hostname";
 
-}
-for($i = 0; $i <= $keys;$i ++ ){
-  $imprimeNombre = $indexUsers[$i];
-  foreach($imprimeNombre as $key => $value){
+
+$count = count($indexUsers);
+
+for($i = 0; $i <= $count;$i ++ ){
+  $printName = $indexUsers[$i];
+  foreach($printName as $key => $value){
     if($key == "hostname"){
-      print_r($value);
+      print_r($i. ': ' .$value);
       echo '<br>';
     }
   }
-
 }
-
 
 #-------------List_Clients---------------------
 
@@ -133,7 +133,7 @@ function dropKeys($keys){
     }
   }
 }
-dropKeys($indexDevices)
+#dropKeys($indexDevices)
 
 ?>
 
