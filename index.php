@@ -64,14 +64,17 @@ $indexUsers = $usersJson;
 
 $hostname = "hostname";
 
-
 $count = count($indexUsers);
 
+
+
+$counter = 0;
 for($i = 0; $i <= $count;$i ++ ){
   $printName = $indexUsers[$i];
   foreach($printName as $key => $value){
     if($key == "hostname"){
-      print_r($i. ': ' .$value);
+      $counter ++;
+      print_r($counter. ': ' .$value);
       echo '<br>';
     }
   }
