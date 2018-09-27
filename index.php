@@ -74,7 +74,17 @@ for($i = 0; $i <= $count;$i ++ ){
 */
     if($key == $hostname){
       $counter ++;
-      print_r($counter . ' - ' . $key . ' : ' . $value);
+      $keys = $key;
+      $values = $value;
+    }
+  }
+
+  foreach($printName as $keyRes => $valueRes){
+
+/**Here we search for the manufacturer name of each device and print it in a single line
+*/
+    if($keyRes == 'oui'){
+      print_r($counter . ' - '.  $valueRes.  ': ' . $values);
       echo '<br>';
     }
   }
