@@ -1,14 +1,12 @@
 <?php
 
-#----------------------------Variables--------------------------
-
 /**
 *Load necessary Unifi files
 */
 require('vendor/autoload.php');
 
 /**
-*Define Unifi login
+*Define Unifi login credentials
 */
 $site_id            = 'default';
 
@@ -41,19 +39,38 @@ $login  = $unifidata->login();
 
 $unifiUsers = $unifidata->stat_allusers();
 
+/**We decode and encode the current array for its full access
+*/
 $usersJson = json_decode(json_encode($unifiUsers), true);
 
+/**We point the encoded array to new variable for conviniencew
+*/
 $indexUsers = $usersJson;
 
+/**We define the key we want to search in the current array
+*/
 $hostname = "hostname";
 
+/**We define a counter to save the numbers of keys in the array
+*/
 $count = count($indexUsers);
 
+/**Counter we are using to print in the list
+*/
 $counter = 0;
 
+/**We loop the same number of keys in the array.
+*/
 for($i = 0; $i <= $count;$i ++ ){
+/**We select the same array from the current number in the loop
+*/
   $printName = $indexUsers[$i];
+/**We start looping through every indentation level in the array
+*/
   foreach($printName as $key => $value){
+/**if the key is equal as the string defined in $hostname variable print its
+*current number in the new list, its key and value
+*/
     if($key == $hostname){
       $counter ++;
       print_r($counter . ' - ' . $key . ' : ' . $value);
