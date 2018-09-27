@@ -1,5 +1,4 @@
 <?php
-
 /**
 *Load necessary Unifi files
 */
@@ -36,7 +35,6 @@ $login  = $unifidata->login();
 
 /**We select to stat the full array of users in the current Unifi site
 */
-
 $unifiUsers = $unifidata->stat_allusers();
 
 /**We decode and encode the current array for its full access
@@ -62,12 +60,15 @@ $counter = 0;
 /**We loop the same number of keys in the array.
 */
 for($i = 0; $i <= $count;$i ++ ){
+
 /**We select the same array from the current number in the loop
 */
   $printName = $indexUsers[$i];
+
 /**We start looping through every indentation level in the array
 */
   foreach($printName as $key => $value){
+
 /**if the key is equal as the string defined in $hostname variable print its
 *current number in the new list, its key and value
 */
