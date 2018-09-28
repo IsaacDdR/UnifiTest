@@ -24,8 +24,6 @@ $unifidata = new UniFi_API\Client($controlleruser, $controllerpassword, $control
 
 $login  = $unifidata->login();
 
-#------------Unifi---Options------------------
-
 /**
 *Here we request the selected type of array from Unifi cloud API
 *later, we decode and encode it into a Json object.
@@ -35,7 +33,9 @@ $login  = $unifidata->login();
 
 /**We select to stat the full array of users in the current Unifi site
 */
-$unifiUsers = $unifidata->stat_allusers();
+unset($unifiUsers);
+$unifiUsers = $unifidata->list_clients();
+
 
 /**We decode and encode the current array for its full access
 */
@@ -84,8 +84,7 @@ for($i = 0; $i <= $count;$i ++ ){
 /**Here we search for the manufacturer name of each device and print it in a single line
 */
     if($keyRes == 'oui'){
-      print_r($counter . ' - '.  $valueRes.  ': ' . $values);
-      echo '<br>';
+        echo $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
     }
   }
 }
