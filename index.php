@@ -21,7 +21,6 @@ $controllerurl      = 'https://unifi.smarthaus.com.mx:8443';
 *Create Unifi Conection and Login
 */
 $unifidata = new UniFi_API\Client($controlleruser, $controllerpassword, $controllerurl, $site_id);
-
 $login  = $unifidata->login();
 
 /**
@@ -33,58 +32,65 @@ $login  = $unifidata->login();
 
 /**We select to stat the full array of users in the current Unifi site
 */
-unset($unifiUsers);
+
+$unifiUsers = NULL;
 $unifiUsers = $unifidata->list_clients();
 
+/**We define the main function
+*/
+function showClients($thisJson){
 
 /**We decode and encode the current array for its full access
 */
-$usersJson = json_decode(json_encode($unifiUsers), true);
+  $usersJson = json_decode(json_encode($thisJson), true);
 
-/**We point the encoded array to new variable for conviniencew
-*/
-$indexUsers = $usersJson;
+  /**We point the encoded array to new variable for conviniencew
+  */
+  $indexUsers = $usersJson;
 
-/**We define the key we want to search in the current array
-*/
-$hostname = "hostname";
+  /**We define the key we want to search in the current array
+  */
+  $hostname = "hostname";
 
-/**We define a counter to save the numbers of keys in the array
-*/
-$count = count($indexUsers);
+  /**We define a counter to save the numbers of keys in the array
+  */
+  $count = count($indexUsers);
 
-/**Counter we are using to print in the list
-*/
-$counter = 0;
+  /**Counter we are using to print in the list
+  */
+  $counter = 0;
 
-/**We loop the same number of keys in the array.
-*/
-for($i = 0; $i <= $count;$i ++ ){
+  /**We loop the same number of keys in the array.
+  */
+  for($i = 0; $i <= $count;$i ++ ){
 
-/**We select the same array from the current number in the loop
-*/
-  $printName = $indexUsers[$i];
+  /**We select the same array from the current number in the loop
+  */
+    $printName = $indexUsers[$i];
 
-/**We start looping through every indentation level in the array
-*/
-  foreach($printName as $key => $value){
+  /**We start looping through every indentation level in the array
+  */
+    foreach($printName as $key => $value){
 
-/**if the key is equal as the string defined in $hostname variable print its
-*current number in the new list, its key and value
-*/
-    if($key == $hostname){
-      $counter ++;
-      $keys = $key;
-      $values = $value;
+  /**if the key is equal as the string defined in $hostname variable print its
+  *current number in the new list, its key and value
+  */
+      if($key == $hostname){
+        $counter ++;
+        $keys = $key;
+        $values = $value;
+      }
     }
-  }
+    foreach($printName as $keyRes => $valueRes){
 
-  foreach($printName as $keyRes => $valueRes){
-
-/**Here we search for the manufacturer name of each device and print it in a single line
-*/
-    if($keyRes == 'oui'){
-        echo $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
+  /**Here we search for the manufacturer name of each device and print it in a single line
+  */
+      if($keyRes == 'oui'){
+          echo $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
+      }
     }
   }
 }
+showClients($unifiUsers);
+
+header("refresh:1;");
