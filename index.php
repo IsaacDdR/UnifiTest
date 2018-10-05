@@ -20,7 +20,8 @@ $controllerurl      = 'https://unifi.smarthaus.com.mx:8443';
 /**
 *Create Unifi Conection and Login
 */
-$unifidata = new UniFi_API\Client($controlleruser, $controllerpassword, $controllerurl, $site_id);
+$unifidata = new UniFi_API\Client($controlleruser, $controllerpassword,
+$controllerurl, $site_id);
 $login  = $unifidata->login();
 
 /**
@@ -32,8 +33,8 @@ $login  = $unifidata->login();
 
 /**We select to stat the full array of users in the current Unifi site
 */
-
 $unifiUsers = NULL;
+
 $unifiUsers = $unifidata->list_clients();
 
 /**We define the main function
