@@ -18,26 +18,26 @@ $controllerurl      = 'https://unifi.smarthaus.com.mx:8443';
 #--------------------------Connections------------------------------------
 
 /**
-*Create Unifi Conection and Login
+*Create Unifi Connection and Login
 */
 $unifidata = new UniFi_API\Client($controlleruser, $controllerpassword,
 $controllerurl, $site_id);
 $login  = $unifidata->login();
 
 /**
-*Here we request the selected type of array from Unifi cloud API
+*Request the selected array from Unifi cloud API
 *later, we decode and encode it into a Json object.
 */
 
 #----------List_Users-------------------------
 
-/**We select to stat the full array of users in the current Unifi site
+/**Stat array from the current Unifi site
 */
 $unifiUsers = NULL;
 
 $unifiUsers = $unifidata->list_clients();
 
-/**We define the main function
+/**Main function
 */
 function showClients($thisJson){
 
