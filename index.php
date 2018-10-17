@@ -26,7 +26,7 @@ $login  = $unifidata->login();
 
 /**
 *Request the selected array from Unifi cloud API
-*later, we decode and encode it into a Json object.
+*Decode and encode it into a Json object.
 */
 
 #----------List_Users-------------------------
@@ -41,19 +41,19 @@ $unifiUsers = $unifidata->list_clients();
 */
 function showClients($thisJson){
 
-/**We decode and encode the current array for its full access
+/*Decode and encode the current array
 */
   $usersJson = json_decode(json_encode($thisJson), true);
 
-  /**We point the encoded array to new variable for conviniencew
+  /**save the encoded array into a new variable for convinience
   */
   $indexUsers = $usersJson;
 
-  /**We define the key we want to search in the current array
+  /**Key we want to search in the current array
   */
   $hostname = "hostname";
 
-  /**We define a counter to save the numbers of keys in the array
+  /**Counter for indexing the amount of keys in the array
   */
   $count = count($indexUsers);
 
@@ -61,11 +61,11 @@ function showClients($thisJson){
   */
   $counter = 0;
 
-  /**We loop the same number of keys in the array.
+  /**We loop times amount of the counter.
   */
   for($i = 0; $i <= $count;$i ++ ){
 
-  /**We select the same array from the current number in the loop
+  /**Select the same array from the current number in the loop
   */
     $printName = $indexUsers[$i];
 
