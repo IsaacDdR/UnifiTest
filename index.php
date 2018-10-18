@@ -33,7 +33,7 @@ $login  = $unifidata->login();
 
 /**Stat array from the current Unifi site
 */
-$unifiUsers = NULL;
+unset($unifiUsers);
 
 $unifiUsers = $unifidata->list_clients();
 
@@ -53,17 +53,13 @@ function showClients($thisJson){
   */
   $hostname = "hostname";
 
-  /**Counter for indexing the amount of keys in the array
-  */
-  $count = count($indexUsers);
-
   /**Counter we are using to print in the list
   */
   $counter = 0;
 
   /**We loop times amount of the counter.
   */
-  for($i = 0; $i <= $count;$i ++ ){
+  for($i = 0; $i <= count($indexUsers) ; $i ++ ){
 
   /**Select the same array from the current number in the loop
   */
