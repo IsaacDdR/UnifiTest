@@ -31,9 +31,13 @@ $login  = $unifidata->login();
 
 #----------List_Users-------------------------
 
-/**Stat array from the current Unifi site
+/**Clear array from previous fetch
 */
+
 unset($unifiUsers);
+
+/**Stat array from the current selection from Unifi site
+*/
 
 $unifiUsers = $unifidata->list_clients();
 
@@ -63,7 +67,7 @@ function showClients($thisJson){
   */
   for($i = 0; $i <= count($indexUsers) ; $i ++ ){
 
-  /**Select the same array from the current number in the loop
+  /**Select array indentation from the current number in the loop
   */
     $printName = $indexUsers[$i];
 
@@ -71,7 +75,7 @@ function showClients($thisJson){
   */
     foreach($printName as $key => $value){
 
-  /**if the key is equal as the string defined in $hostname variable print its
+  /**if the key is equal as the string defined at $hostname variable, print
   *current number in the new list, its key and value
   */
       if($key == $hostname){
@@ -82,7 +86,7 @@ function showClients($thisJson){
     }
     foreach($printName as $keyRes => $valueRes){
 
-  /**Here we search for the manufacturer name of each device and print it in a single line
+  /**search for the manufacturer name of each device and print it in a single line
   */
       if($keyRes == 'oui'){
 
