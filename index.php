@@ -39,13 +39,15 @@ $unifiUsers = $unifidata->list_clients();
 
 /**Main function
 */
+
 function showClients($thisJson){
+
 
 /*Decode and encode the current array
 */
   $usersJson = json_decode(json_encode($thisJson), true);
 
-  /**save the encoded array into a new variable for convinience
+  /**save the encoded array into a new variable for convenience
   */
   $indexUsers = $usersJson;
 
@@ -75,7 +77,7 @@ function showClients($thisJson){
       if($key == $hostname){
         $counter ++;
         $keys = $key;
-        $values = $value;
+        $values = strval($value);
       }
     }
     foreach($printName as $keyRes => $valueRes){
@@ -83,7 +85,10 @@ function showClients($thisJson){
   /**Here we search for the manufacturer name of each device and print it in a single line
   */
       if($keyRes == 'oui'){
-          echo $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
+
+        $result = $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
+        echo $result;
+        unset($result);
       }
     }
   }
