@@ -15,13 +15,12 @@ require_once('vendor/autoload.php');
  * include the config file (place your credentials etc. there if not already present)
  * see the config.template.php file for an example
  */
-require_once('config.php');
+require_once('vendor/config.php');
 
 /**
  * site id and MAC address of AP to query
  */
-$site_id = '<enter your site id here>';
-$ap_mac  = '<enter MAC address of Access Point to check>';
+$ap_mac  = 'fc:ec:da:1c:e0:50';
 
 /**
  * initialize the UniFi API connection class and log in to the controller and do our thing

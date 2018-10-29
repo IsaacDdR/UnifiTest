@@ -20,7 +20,12 @@ require_once('config.php');
 /**
  * site id and MAC address of AP to query
  */
+<<<<<<< HEAD
 $ap_mac  = 'fc:ec:da:1c:e0:50';
+=======
+$site_id = '<enter your site id here>';
+$ap_mac  = '<enter MAC address of Access Point to check>';
+>>>>>>> 74d0778974ec7938ff26570166d80de0c802af9a
 
 /**
  * initialize the UniFi API connection class and log in to the controller and do our thing
@@ -34,6 +39,7 @@ $data             = $unifi_connection->spectrum_scan_state($ap_mac);
 /**
  * provide feedback in json format
  */
+<<<<<<< HEAD
 
 ?>
 
@@ -46,3 +52,6 @@ $data             = $unifi_connection->spectrum_scan_state($ap_mac);
     <pre><?php echo json_encode($data, JSON_PRETTY_PRINT);?> </pre>
   </body>
 </html>
+=======
+echo json_encode($data, JSON_PRETTY_PRINT);
+>>>>>>> 74d0778974ec7938ff26570166d80de0c802af9a
