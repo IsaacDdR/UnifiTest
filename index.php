@@ -4,6 +4,19 @@
 */
 require('vendor/autoload.php');
 
+
+$openFile = fopen('output.txt', 'r');
+
+while ($line = fgets($openFile)){
+  echo($line);
+}
+
+echo $probeFile;
+
+foreach ($probeFile as $devices)
+{
+  echo $devices;
+}
 /**
 *Define Unifi login credentials
 */
@@ -28,13 +41,14 @@ $login  = $unifidata->login();
 *Request the selected array from Unifi cloud API
 *Decode and encode it into a Json object.
 */
+$unifiUsers;
 
+unset($unifiUsers);
 #----------List_Users-------------------------
 
 /**Clear array from previous fetch
 */
 
-unset($unifiUsers);
 
 /**Stat array from the current selection from Unifi site
 */
@@ -90,8 +104,8 @@ function showClients($thisJson){
   */
       if($keyRes == 'oui'){
 
+        global $result;
         $result = $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
-        echo $result;
         unset($result);
       }
     }
@@ -100,3 +114,23 @@ function showClients($thisJson){
 showClients($unifiUsers);
 
 header("refresh:1;");
+
+?>
+
+<html>
+  <head>
+    <title>SMART DETECTION</title>
+  </head>
+  <body>
+    <form action="#" method="post">
+
+    </form>
+    <div class="main">
+      <div class="wrapper">
+        <div class="clients">
+          <pre><?php echo $result; ?></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
