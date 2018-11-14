@@ -32,15 +32,21 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
     <title>SMART DETECTION</title>
   </head>
   <style>
-
+    @import url('https://fonts.googleapis.com/css?family=Questrial');
     .main{
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Questrial', sans-serif;
       margin: 0px;
     }
     .data-div{
-      border: solid black;
+      -webkit-box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
+      -moz-box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
+      box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
+      padding:1%;
+      border-radius: 5px;
       width:50%;
       margin:auto;
+      margin-top: 5%;
+      background-color: rgb(195, 206, 244);
     }
 
     .titles
@@ -51,12 +57,12 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
       width: 50%;
     }
     .content-wrapper{
+
       text-align: left;
       margin:5%;
     }
     .connected{
       padding:3%;
-      border:solid black;
       margin:3%;
 
     }
