@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 require('vendor/autoload.php');
 
 require('config.php');
@@ -37,7 +36,8 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
       font-family: 'Questrial', sans-serif;
       margin: 0px;
     }
-    .data-div{
+    .data-div
+    {	
       -webkit-box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
       -moz-box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
       box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
@@ -46,7 +46,7 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
       width:50%;
       margin:auto;
       margin-top: 5%;
-      background-color: rgb(195, 206, 244);
+      background-color: rgb(229, 229, 229);
     }
 
     .titles
@@ -90,7 +90,7 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
 
                 if($keyRes == 'oui'){
                   $counter ++;
-                  global $result;
+                  $result;
                   $result = $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
                   $printWord = '<pre>'. $result. '</pre>';
                   print $printWord;
@@ -157,4 +157,4 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
       </div>
     </div>
   </body>
-</html>
+<html>
