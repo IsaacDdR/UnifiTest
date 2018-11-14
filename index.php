@@ -32,25 +32,33 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
     <title>SMART DETECTION</title>
   </head>
   <style>
+
     .main{
+      font-family: 'Montserrat', sans-serif;
       margin: 0px;
     }
     .data-div{
       border: solid black;
       width:50%;
       margin:auto;
-
     }
 
     .titles
     {
       text-align: center;
       margin: auto;
+      margin-top: 2%;
       width: 50%;
     }
     .content-wrapper{
-      text-align: center;
+      text-align: left;
       margin:5%;
+    }
+    .connected{
+      padding:3%;
+      border:solid black;
+      margin:3%;
+
     }
   </style>
   <body>
@@ -78,7 +86,8 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
                   $counter ++;
                   global $result;
                   $result = $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
-                  echo '<pre>'. $result. '</pre>';
+                  $printWord = '<pre>'. $result. '</pre>';
+                  print $printWord;
                 }
               }
             }
@@ -89,19 +98,50 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
           <h3 class = 'titles'>DISPOSITIVOS CERCANOS</h3>
           <div class = 'content-wrapper'>
           <?php
+            $stack = [];
+
             $openFile = file('output.txt');
 
             $devicesJson = array($openFile);
 
+            $mainStack = [];
 
-            for ($s = 0; $s < count($devicesJson); $s ++ )
-            {
-              $devicesName = $devicesJson[$s];
+            $devicesCount = count($devicesJson[0]);
+            $otherJson = $devicesJson;
 
-              foreach($devicesName as $lines => $valueLine)
-              {
-                echo '<pre>' . $valueLine . '</pre>';
+            for($i = 0; $i < $devicesCount; $i++){
+              foreach($devicesJson as $device){
+                array_push( $mainStack, $device[$i] );
               }
+            }
+
+            $stackCount = count($mainStack);
+
+            if($stackCount > 30){
+              unset($mainStack[0]);
+            }
+
+            for ($s = 0; $s < count($mainStack); $s ++){
+              $devicesName = $mainStack[$s];
+              $arrayDevices = array($devicesName);
+
+              foreach($arrayDevices as $lines => $valueLine){
+
+                preg_match_all("/\b[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}\b/su", $valueLine, $matches);
+
+                foreach($matches as $mac => $hexMac){
+                  $cleanMac = implode($hexMac);
+                  array_push($stack, $cleanMac);
+                  $uniques = array_unique($stack);
+
+                }
+              }
+            }
+
+            foreach($uniques as $mainValue){
+              $newStack = [];
+              echo '<pre class = "connected">'.  $mainValue. '</pre>';
+              array_push($newStack, $mainValue);
             }
           ?>
           </div>
