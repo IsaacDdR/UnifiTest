@@ -1,4 +1,4 @@
-<?php 
+<?php
 require('vendor/autoload.php');
 
 require('config.php');
@@ -37,7 +37,7 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
       margin: 0px;
     }
     .data-div
-    {	
+    {
       -webkit-box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
       -moz-box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
       box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
@@ -121,12 +121,6 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
               }
             }
 
-            $stackCount = count($mainStack);
-
-            if($stackCount > 30){
-              unset($mainStack[0]);
-            }
-
             for ($s = 0; $s < count($mainStack); $s ++){
               $devicesName = $mainStack[$s];
               $arrayDevices = array($devicesName);
@@ -140,14 +134,18 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
                   array_push($stack, $cleanMac);
                   $uniques = array_unique($stack);
 
+
                 }
               }
             }
 
-            foreach($uniques as $mainValue){
-              $newStack = [];
-              echo '<pre class = "connected">'.  $mainValue. '</pre>';
-              array_push($newStack, $mainValue);
+            foreach($uniques as $mainValue => $thisValue){
+              static $newStack = [];
+              array_push($newStack, $thisValue);
+              print_r ('<pre class = "connected">'.  $thisValue. '</pre>');
+            }
+            if (count($newStack) > 30){
+              unset($newStack[0]);
             }
           ?>
           </div>
