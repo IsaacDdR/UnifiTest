@@ -139,12 +139,18 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
               }
             }
 
+            $count = 0;
+
             foreach($uniques as $mainValue => $thisValue){
               static $newStack = [];
               array_push($newStack, $thisValue);
-              print_r ('<pre class = "connected">'.  $thisValue. '</pre>');
+              $count ++;
+              print_r ( '<pre class = "connected">'.$count . "-" .$thisValue. '</pre>');
             }
+
+
             if (count($newStack) > 30){
+
               unset($newStack[0]);
             }
           ?>
