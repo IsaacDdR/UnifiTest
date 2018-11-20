@@ -28,6 +28,7 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
 
 <html>
   <head>
+    <link rel='icon' href='favicon.png' type='image/x-icon'/>
     <title>SMART DETECTION</title>
   </head>
   <style>
@@ -36,19 +37,31 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
       font-family: 'Questrial', sans-serif;
       margin: 0px;
     }
+
     .data-div
     {
-      -webkit-box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
-      -moz-box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
-      box-shadow: 0px 0px 22px 0px rgba(87,87,87,0.34);
       padding:1%;
       border-radius: 5px;
       width:50%;
       margin:auto;
-      margin-top: 5%;
       background-color: rgb(229, 229, 229);
     }
 
+    .logo{
+      width: 50%;
+    }
+
+
+    .logo-title{
+      margin:auto;
+      width: 50%;
+      padding: 1%;
+    }
+
+    .logo-text{
+      font-size: 3vh;
+      float:right;
+    }
     .titles
     {
       text-align: center;
@@ -56,19 +69,24 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
       margin-top: 2%;
       width: 50%;
     }
-    .content-wrapper{
 
+    .content-wrapper{
       text-align: left;
       margin:5%;
     }
+
     .connected{
-      padding:3%;
       margin:3%;
 
     }
   </style>
   <body>
     <div class="main">
+      <div class="logo-title">
+
+        <img class="logo" src='logo-corpo.jpeg'>
+        <p class='logo-text'>SMART DETECTOR</p>
+      </div>
       <div class="wrapper">
         <div class="clients data-div">
           <h3 class='titles'>DISPOSITIVOS CONECTADOS</h3>
