@@ -41,7 +41,6 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
     .data-div
     {
       padding:1%;
-      border-radius: 5px;
       width:50%;
       margin:auto;
       background-color: rgb(229, 229, 229);
@@ -71,8 +70,10 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
     }
 
     .content-wrapper{
+      overflow-y: scroll;
       text-align: left;
       margin:5%;
+      max-height:500px;
     }
 
     .connected{
