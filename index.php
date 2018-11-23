@@ -3,6 +3,8 @@ require('vendor/autoload.php');
 
 require('config.php');
 
+require('mysql.php');
+
 $filePath = 'output.txt';
 
 ftruncate($filePath);
