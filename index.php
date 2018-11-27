@@ -24,6 +24,35 @@ $unifiUsers = $unifidata->list_clients();
 $usersJson = json_decode(json_encode($unifiUsers), true);
 
 
+
+function uniqueConnected ($listConnected){
+  $connectedArray = [];
+  foreach($listConnected as $arrayItem){
+    foreach($arrayItem as $keyValue => $value){
+      if($keyValue == "oui"){
+        array_push($connectedArray, $value);
+      }
+    }
+  }
+  return $connectedArray;
+}
+
+$uniArray = uniqueConnected($usersJson);
+
+function uniqueArray ($device){
+  $jsonDevice = json_decode(json_encode($device), true);
+  foreach($jsonDevice as $newDevice){
+    return $newDevice;
+  }
+}
+print_r(uniqueArray($uniArray));
+
+
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -32,56 +61,10 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
   <head>
     <link rel='icon' href='favicon.png' type='image/x-icon'/>
     <title>SMART DETECTION</title>
+    <link rel='stylesheet' href="style.css" type='text/css'>
   </head>
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Questrial');
-    .main{
-      font-family: 'Questrial', sans-serif;
-      margin: 0px;
-    }
 
-    .data-div
-    {
-      padding:1%;
-      width:50%;
-      margin:auto;
-      background-color: rgb(229, 229, 229);
-    }
-
-    .logo{
-      width: 50%;
-    }
-
-
-    .logo-title{
-      margin:auto;
-      width: 50%;
-      padding: 1%;
-    }
-
-    .logo-text{
-      font-size: 3vh;
-      float:right;
-    }
-    .titles
-    {
-      text-align: center;
-      margin: auto;
-      margin-top: 2%;
-      width: 50%;
-    }
-
-    .content-wrapper{
-      overflow-y: scroll;
-      text-align: left;
-      margin:5%;
-      max-height:500px;
-    }
-
-    .connected{
-      margin:3%;
-
-    }
   </style>
   <body>
     <div class="main">
@@ -109,7 +92,7 @@ $usersJson = json_decode(json_encode($unifiUsers), true);
 
               foreach($printName as $keyRes => $valueRes){
 
-                if($keyRes == 'oui'){
+                if($keyRes == 'mac'){
                   $counter ++;
                   $result;
                   $result = $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
