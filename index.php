@@ -1,58 +1,5 @@
 <?php
-require('vendor/autoload.php');
-
-require('config.php');
-
-require('mysql.php');
-
-$filePath = 'output.txt';
-
-ftruncate($filePath);
-
-
-
-
-$unifidata = new UniFi_API\Client($controlleruser, $controllerpassword,
-$controllerurl, $site_id);
-
-$login  = $unifidata->login();
-
-unset($usersJson);
-
-$unifiUsers = $unifidata->list_clients();
-
-$usersJson = json_decode(json_encode($unifiUsers), true);
-
-
-
-function uniqueConnected ($listConnected){
-  $connectedArray = [];
-  foreach($listConnected as $arrayItem){
-    foreach($arrayItem as $keyValue => $value){
-      if($keyValue == "oui"){
-        array_push($connectedArray, $value);
-      }
-    }
-  }
-  return $connectedArray;
-}
-
-$uniArray = uniqueConnected($usersJson);
-
-function uniqueArray ($device){
-  $jsonDevice = json_decode(json_encode($device), true);
-  foreach($jsonDevice as $newDevice){
-    return $newDevice;
-  }
-}
-print_r(uniqueArray($uniArray));
-
-
-
-
-
-
-
+  require('getDev.php');
 ?>
 
 <!DOCTYPE html>
@@ -78,29 +25,8 @@ print_r(uniqueArray($uniArray));
           <h3 class='titles'>DISPOSITIVOS CONECTADOS</h3>
           <div class='content-wrapper'>
           <?php
-            $counter = 0;
-            for($i = 0; $i <= count($usersJson); $i ++ ){
-
-              $printName = $usersJson[$i];
-
-              foreach($printName as $key => $value){
-
-                if($key == 'hostname'){
-                $values = strval($value);
-                }
-              }
-
-              foreach($printName as $keyRes => $valueRes){
-
-                if($keyRes == 'mac'){
-                  $counter ++;
-                  $result;
-                  $result = $counter . ' - '.  $valueRes.  ': ' . $values. '<br>';
-                  $printWord = '<pre>'. $result. '</pre>';
-                  print $printWord;
-                }
-              }
-            }
+            require('getConn.php');
+            print_r(returnDevices($jsonArray));
           ?>
         </div>
         </div>
