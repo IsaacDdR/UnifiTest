@@ -13,7 +13,6 @@ $conn = mysqli_connect($servername, $username, $password, $db);
 if(!$conn){
   die("Fallo en la conexion " . mysqli_connect_error());
 }
-echo "Conexion exitosa";
 
 /*CREATE DATABASE
 
