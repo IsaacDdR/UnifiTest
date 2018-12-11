@@ -36,11 +36,12 @@ function uniqueConnected ($listConnected){
 
 function returnDevices($devicesArray){
   foreach($devicesArray as $item){
-    print_r('<pre>'.$item . '</pre>');
+    $time = date("Y/m/d");
+    $secs = date("h-i-s");
+    print_r('<pre>'.$item . " " . $time . " " . $secs . '</pre>');
   }
 }
 
+
 $jsonArray = json_decode(json_encode(uniqueConnected($usersJson)));
-
-
 ?>

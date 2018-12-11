@@ -30,7 +30,9 @@ $macJson = json_decode(json_encode($macUniques), true);
 
 function getMac($arrayMac){
   foreach($arrayMac as $newMac){
-    print_r('<pre>' . $newMac . '</pre>');
+    $time = date("Y/m/d");
+    $secs = date("h-i-s");
+    print_r('<pre>' . $newMac . " " . $time . " " . $secs . '</pre>');
   }
 }
 

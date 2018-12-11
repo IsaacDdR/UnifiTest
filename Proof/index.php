@@ -25,6 +25,8 @@ $unifiArray = $unifidata->list_clients();
 
 $jsonList = json_decode(json_encode($unifiArray), true);
 
+
+
 function returnList ($theList){
   $servername = 'localhost';
 
