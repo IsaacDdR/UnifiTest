@@ -33,12 +33,15 @@ function uniqueConnected ($listConnected){
   return $connectedArray;
 }
 
-
 function returnDevices($devicesArray){
   foreach($devicesArray as $item){
-    $time = date("Y/m/d");
-    $secs = date("h-i-s");
-    print_r('<pre>'.$item . " " . $time . " " . $secs . '</pre>');
+    $insertMac = "INSERT INTO MacDevices (MAC_name) VALUES ('".$item."')";
+    if(mysqli_query($conn, $insertMac)){
+      echo 'se pudo';
+    }
+    echo '<br>';
+    print_r($item);
+    echo '<br>';
   }
 }
 

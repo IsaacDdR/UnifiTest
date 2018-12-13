@@ -9,7 +9,6 @@
 $datesList = mysqli_query($conn, $getDates);
 
 
-
 function returnDates($dates){
   $time = ("Y/m/d");
   foreach($dates as $date){
@@ -23,6 +22,10 @@ function returnDates($dates){
 }
 $thisState = (returnDates($datesList));
 
+$time = date('D/m/y')
+if ($thisState == $time){
+
+}
 /*
 $thisDate = authData($getDates);
 function getDateList(authDate){
