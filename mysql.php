@@ -2,11 +2,11 @@
 
 $servername = 'localhost';
 
-$username   = 'unifi';
+$username   = 'root';
 
-$password   = 'TEST';
+$password   = 'RootPass';
 
-$db = "unifi";
+$db = "MAC";
 
 $conn = mysqli_connect($servername, $username, $password, $db);
 

@@ -1,8 +1,13 @@
 <?php
 
+require('mysql.php');
+
 require('vendor/autoload.php');
 
 require('config.php');
+
+
+
 
 
 $unifidata = new UniFi_API\Client($controlleruser, $controllerpassword,
@@ -14,6 +19,7 @@ $login  = $unifidata->login();
 $unifiUsers = $unifidata->list_clients();
 
 $usersJson = json_decode(json_encode($unifiUsers), true);
+
 
 
 function uniqueConnected ($listConnected){
@@ -34,8 +40,13 @@ function uniqueConnected ($listConnected){
 }
 
 function returnDevices($devicesArray){
+$servername = "localhost"; 
+$username = "root";
+$password = "RootPass";
+$db = "MAC";
+$conn = mysqli_connect($servername, $username, $password, $db);
   foreach($devicesArray as $item){
-    $insertMac = "INSERT INTO MacDevices (MAC_name) VALUES ('".$item."')";
+    $insertMac = "INSERT INTO DEVICES (mac) VALUES ('".$item."')";
     if(mysqli_query($conn, $insertMac)){
       echo 'se pudo';
     }
